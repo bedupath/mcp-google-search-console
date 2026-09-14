@@ -112,8 +112,11 @@ separately before relying on automated enforcement:
   Require one approval once another active maintainer can review changes.
 - Allow squash merging only, use the PR title for the squash commit title, and
   enable automatic deletion of merged source branches. Keep a linear `main` history.
-- Verify the private reporting channel in [SECURITY.md](SECURITY.md) before making
-  the repository public. Do not publish an unmonitored or unverified contact.
+- Keep GitHub private vulnerability reporting enabled and verify the maintainer
+  notifications described in [SECURITY.md](SECURITY.md). Do not publish an
+  unmonitored or unverified contact.
+- Enable secret scanning, push protection, Dependabot alerts, and Dependabot
+  security updates. Review alerts; enabling a scanner is not proof of a clean history.
 
 Protection availability depends on repository visibility and the organization's
 GitHub plan. See [branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
@@ -122,6 +125,14 @@ and [squash merge settings](https://docs.github.com/en/repositories/configuring-
 ## Releases
 
 Releases are maintainer-controlled, not automatically published on merge.
+
+Before the first alpha release, run a full-history secret scan (for example,
+`gitleaks git . --log-opts="--all" --redact=100` with a verified Gitleaks installation)
+and the offline checks above. Follow [Setup and testing](docs/setup-and-testing.md)
+against one explicitly authorized property to validate installation, discovery,
+read operations, and property rejection. Confirm write tools are absent by default;
+a live sitemap mutation is not required. Record passes and skips separately, keep
+private property data out of release notes, and do not claim live validation from mocks.
 
 1. Prepare a release PR from `main`. Keep the version in `pyproject.toml` and
    `src/mcp_google_search_console/__init__.py` consistent, regenerate `uv.lock`,
