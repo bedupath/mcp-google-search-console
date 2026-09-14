@@ -31,7 +31,7 @@ No Google account, service-account key, `.env`, or live property is needed to de
 and run tests. Tests use synthetic credentials and mocked HTTP. Never make a live
 sitemap mutation to demonstrate that a contribution works.
 
-Runtime setup is documented separately in [README.md](README.md#install-and-connect).
+Runtime setup is documented separately in [Setup and testing](docs/setup-and-testing.md).
 Source is under `src/mcp_google_search_console/`; offline tests are under `tests/`.
 Agent-assisted contributors should also read [AGENTS.md](AGENTS.md).
 
