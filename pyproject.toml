@@ -48,7 +48,10 @@ dev = [
 packages = ["src/mcp_google_search_console"]
 
 [tool.hatch.build.targets.sdist]
-include = ["/src", "/tests", "/README.md", "/LICENSE", "/pyproject.toml", "/uv.lock"]
+include = [
+  "/src", "/tests", "/README.md", "/CONTRIBUTING.md", "/SECURITY.md",
+  "/LICENSE", "/pyproject.toml", "/uv.lock",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

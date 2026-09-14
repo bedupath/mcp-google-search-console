@@ -3,18 +3,15 @@
 This is the standalone Bedupath Google Search Console MCP repository. Sibling
 projects are consumers, not part of this repository's scope.
 
-## Product contract
+## Shared contributor workflow
 
-- Keep the MCP non-opinionated: Google operations and data, not SEO strategies,
-  scores, recommended actions, reporting periods, or workflow prompts.
-- The public tool surface is the eight operations documented in README.md.
-  Do not add account management, crawling, scheduling, or new providers without
-  an explicit scope change.
-- Responses remain raw provider objects. Never relabel sitemap `submitted` as
-  indexed, collapse unknown inspection states to not indexed, or treat API
-  errors as successful empty data.
-- One service-account identity may access multiple properties. Every scoped
-  operation uses an exact `site_url`; no global active-site state.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before implementation. It is the source of
+truth for product scope, local setup, branching, PRs, verification, and releases.
+Use a short-lived task branch from `main`; there is no permanent `dev` branch.
+Do not switch away from unrelated user work to satisfy that workflow.
+
+Read [SECURITY.md](SECURITY.md) before handling a vulnerability. A documented GitHub
+setting is not evidence that it is enabled; verify remote state when authorized.
 
 ## Code map
 
@@ -62,15 +59,8 @@ When maintaining skills:
 
 ## Verification and handoff
 
-```bash
-uv sync --locked
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy
-uv run pytest --cov=mcp_google_search_console --cov-report=term-missing
-uv build
-git diff --check
-```
+Run the [verification commands](CONTRIBUTING.md#verification) for a completed
+implementation. Use the relevant offline tests for narrower changes.
 
 Update README examples when signatures/configuration change. Report what was
 implemented, checks actually run, and any live-validation gap. Do not claim that

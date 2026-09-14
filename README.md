@@ -279,14 +279,8 @@ client remains caller-owned and must be closed by the caller.
 
 ## Development
 
-```bash
-uv sync --locked
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy
-uv run pytest --cov=mcp_google_search_console --cov-report=term-missing
-uv build
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, verification commands, the
+`main` + short-lived branch/PR workflow, and maintainer-controlled releases.
 
 Tests use synthetic RSA credentials, mocked Google HTTP, in-process MCP sessions,
 and a real stdio subprocess with no configured credentials. They do not require
@@ -304,12 +298,11 @@ ignore rules are a convenience, not a secret-scanning guarantee. Rotate a leaked
 Google key even if its Git history is later removed. When sharing diagnostics,
 include sanitized error codes and request structure, not tokens or private URLs.
 
-For vulnerabilities, use the repository's private vulnerability reporting channel
-if enabled; do not publish exploitable details or credentials in a public issue.
-There is no hosted credential-handling service in this project.
+Read [SECURITY.md](SECURITY.md) for the private-reporting setup status and disclosure
+policy. Do not publish exploitable details or credentials in a public issue. There
+is no hosted credential-handling service in this project.
 
-Contributions should preserve the provider-only boundary, include offline regression
-tests, and run the checks above. New APIs or breaking schemas should be discussed
-before expanding the eight-tool surface. This project is not affiliated with Google.
+Follow [CONTRIBUTING.md](CONTRIBUTING.md) for contribution scope and required checks.
+This project is not affiliated with Google.
 
 Licensed under [MIT](LICENSE).
